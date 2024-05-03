@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <RootNamespace>AppHost</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0-preview.5.24201.12" />
+    <PackageReference Include="Aspire.Hosting.NodeJs" Version="8.0.0-preview.5.24201.12" />
+    <PackageReference Include="Aspire.Hosting.Orleans" Version="8.0.0-preview.5.24201.12" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="8.0.0-preview.5.24201.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Apps\Apps.OrleansClientApi\Apps.OrleansClientApi.csproj" />
+    <ProjectReference Include="..\Apps\Apps.Silo\Apps.Silo.csproj" />
+    <ProjectReference Include="..\Apps\Apps.NonClientApi\Apps.NonClientApi.csproj" />
+  </ItemGroup>
+
+</Project>

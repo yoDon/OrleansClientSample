@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nonclientapi
+  labels:
+    app: nonclientapi
+spec:
+  minReadySeconds: 60
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nonclientapi
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nonclientapi
+    spec:
+      containers:
+      - name: nonclientapi
+        image: nonclientapi:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        - containerPort: 8443
+        envFrom:
+        - configMapRef:
+            name: nonclientapi-env
+      terminationGracePeriodSeconds: 180

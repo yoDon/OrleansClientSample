@@ -1,0 +1,10 @@
+resources:
+- orleans-redis
+- silo
+- orleansclientapi
+- nonclientapi
+- dashboard.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+

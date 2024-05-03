@@ -1,0 +1,122 @@
+{
+  "resources": {
+    "orleans-redis": {
+      "type": "container.v0",
+      "connectionString": "{orleans-redis.bindings.tcp.host}:{orleans-redis.bindings.tcp.port}",
+      "image": "redis:7.2.4",
+      "bindings": {
+        "tcp": {
+          "scheme": "tcp",
+          "protocol": "tcp",
+          "transport": "tcp",
+          "targetPort": 6379
+        }
+      }
+    },
+    "silo": {
+      "type": "project.v0",
+      "path": "../Apps/Apps.Silo/Apps.Silo.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
+        "Orleans__Clustering__ProviderType": "Redis",
+        "Orleans__Clustering__ServiceKey": "orleans-redis",
+        "ConnectionStrings__orleans-redis": "{orleans-redis.connectionString}",
+        "Orleans__ClusterId": "84e2321884e34171a333d81d68c5ec36",
+        "Orleans__EnableDistributedTracing": "true",
+        "Orleans__Endpoints__SiloPort": "{silo.bindings.orleans-silo.targetPort}",
+        "Orleans__Endpoints__GatewayPort": "{silo.bindings.orleans-gateway.targetPort}"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http"
+        },
+        "https": {
+          "scheme": "https",
+          "protocol": "tcp",
+          "transport": "http"
+        },
+        "orleans-silo": {
+          "scheme": "tcp",
+          "protocol": "tcp",
+          "transport": "tcp",
+          "targetPort": 8000
+        },
+        "orleans-gateway": {
+          "scheme": "tcp",
+          "protocol": "tcp",
+          "transport": "tcp",
+          "targetPort": 8001
+        }
+      }
+    },
+    "orleansclientapi": {
+      "type": "project.v0",
+      "path": "../Apps/Apps.OrleansClientApi/Apps.OrleansClientApi.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
+        "Orleans__Clustering__ProviderType": "Redis",
+        "Orleans__Clustering__ServiceKey": "orleans-redis",
+        "ConnectionStrings__orleans-redis": "{orleans-redis.connectionString}",
+        "Orleans__ClusterId": "84e2321884e34171a333d81d68c5ec36",
+        "Orleans__EnableDistributedTracing": "true",
+        "Orleans__Endpoints__SiloPort": "{orleansclientapi.bindings.orleans-silo.targetPort}",
+        "Orleans__Endpoints__GatewayPort": "{orleansclientapi.bindings.orleans-gateway.targetPort}"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        },
+        "https": {
+          "scheme": "https",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        },
+        "orleans-silo": {
+          "scheme": "tcp",
+          "protocol": "tcp",
+          "transport": "tcp",
+          "targetPort": 8002
+        },
+        "orleans-gateway": {
+          "scheme": "tcp",
+          "protocol": "tcp",
+          "transport": "tcp",
+          "targetPort": 8003
+        }
+      }
+    },
+    "nonclientapi": {
+      "type": "project.v0",
+      "path": "../Apps/Apps.NonClientApi/Apps.NonClientApi.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        },
+        "https": {
+          "scheme": "https",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        }
+      }
+    }
+  }
+}

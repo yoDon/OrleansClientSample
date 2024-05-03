@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orleans-redis
+  labels:
+    app: orleans-redis
+spec:
+  minReadySeconds: 60
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orleans-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: orleans-redis
+    spec:
+      containers:
+      - name: orleans-redis
+        image: redis:7.2.4
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 6379
+        envFrom:
+        - configMapRef:
+            name: orleans-redis-env
+      terminationGracePeriodSeconds: 180

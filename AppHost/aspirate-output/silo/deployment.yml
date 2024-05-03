@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silo
+  labels:
+    app: silo
+spec:
+  minReadySeconds: 60
+  replicas: 1
+  selector:
+    matchLabels:
+      app: silo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: silo
+    spec:
+      containers:
+      - name: silo
+        image: silo:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        - containerPort: 8443
+        - containerPort: 8000
+        - containerPort: 8001
+        envFrom:
+        - configMapRef:
+            name: silo-env
+        - secretRef:
+            name: silo-secrets
+      terminationGracePeriodSeconds: 180
