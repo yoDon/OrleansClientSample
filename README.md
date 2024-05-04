@@ -1,7 +1,7 @@
 # Aspire Orleans Client-Silo Example
 
 This example shows and Orleans client and silo running in separate processes,
-configured for hosting and deployment using .NET Aspire.
+configured for hosting and deployment using .NET Aspire and Aspirate (aspir8).
 
 There are three App projects in this solution:
 
@@ -14,7 +14,7 @@ There are three App projects in this solution:
 Start the AppHost project by any of the following methods:
 
 - Run the `AppHost` project in Visual Studio.
-- Instal the Rider Aspire Plugin in Rider and run the `AppHost: http` configuration in Rider.
+- Install the Rider Aspire Plugin in Rider and run the `AppHost: http` configuration in Rider.
 - `dotnet run --project AppHost` from the command line.
 
 Running the solution will open the Aspire dashboard in your browser. 
