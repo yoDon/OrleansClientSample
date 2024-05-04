@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: orleans-redis
-        image: redis:7.2.4
+        image: docker.io/library/redis:7.2.4
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 6379

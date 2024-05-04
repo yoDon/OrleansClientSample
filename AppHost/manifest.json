@@ -3,7 +3,7 @@
     "orleans-redis": {
       "type": "container.v0",
       "connectionString": "{orleans-redis.bindings.tcp.host}:{orleans-redis.bindings.tcp.port}",
-      "image": "redis:7.2.4",
+      "image": "docker.io/library/redis:7.2.4",
       "bindings": {
         "tcp": {
           "scheme": "tcp",
@@ -19,11 +19,13 @@
       "env": {
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
         "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
         "Orleans__Clustering__ProviderType": "Redis",
         "Orleans__Clustering__ServiceKey": "orleans-redis",
         "ConnectionStrings__orleans-redis": "{orleans-redis.connectionString}",
-        "Orleans__ClusterId": "84e2321884e34171a333d81d68c5ec36",
+        "Orleans__ClusterId": "{orleans-cluster-cluster-id.value}",
+        "Orleans__ServiceId": "{orleans-cluster-service-id.value}",
         "Orleans__EnableDistributedTracing": "true",
         "Orleans__Endpoints__SiloPort": "{silo.bindings.orleans-silo.targetPort}",
         "Orleans__Endpoints__GatewayPort": "{silo.bindings.orleans-gateway.targetPort}"
@@ -59,11 +61,13 @@
       "env": {
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
         "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
         "Orleans__Clustering__ProviderType": "Redis",
         "Orleans__Clustering__ServiceKey": "orleans-redis",
         "ConnectionStrings__orleans-redis": "{orleans-redis.connectionString}",
-        "Orleans__ClusterId": "84e2321884e34171a333d81d68c5ec36",
+        "Orleans__ClusterId": "{orleans-cluster-cluster-id.value}",
+        "Orleans__ServiceId": "{orleans-cluster-service-id.value}",
         "Orleans__EnableDistributedTracing": "true",
         "Orleans__Endpoints__SiloPort": "{orleansclientapi.bindings.orleans-silo.targetPort}",
         "Orleans__Endpoints__GatewayPort": "{orleansclientapi.bindings.orleans-gateway.targetPort}"
@@ -101,6 +105,7 @@
       "env": {
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
         "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
       },
       "bindings": {
@@ -115,6 +120,38 @@
           "protocol": "tcp",
           "transport": "http",
           "external": true
+        }
+      }
+    },
+    "orleans-cluster-cluster-id": {
+      "type": "parameter.v0",
+      "value": "{orleans-cluster-cluster-id.inputs.value}",
+      "inputs": {
+        "value": {
+          "type": "string",
+          "default": {
+            "generate": {
+              "minLength": 25,
+              "upper": false,
+              "special": false
+            }
+          }
+        }
+      }
+    },
+    "orleans-cluster-service-id": {
+      "type": "parameter.v0",
+      "value": "{orleans-cluster-service-id.inputs.value}",
+      "inputs": {
+        "value": {
+          "type": "string",
+          "default": {
+            "generate": {
+              "minLength": 25,
+              "upper": false,
+              "special": false
+            }
+          }
         }
       }
     }
