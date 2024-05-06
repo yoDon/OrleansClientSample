@@ -2,25 +2,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: orleansclientapi
+  name: orleans-client-api
   labels:
-    app: orleansclientapi
+    app: orleans-client-api
 spec:
   minReadySeconds: 60
   replicas: 1
   selector:
     matchLabels:
-      app: orleansclientapi
+      app: orleans-client-api
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: orleansclientapi
+        app: orleans-client-api
     spec:
       containers:
-      - name: orleansclientapi
-        image: orleansclientapi:latest
+      - name: orleans-client-api
+        image: orleans-client-api:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -29,7 +29,7 @@ spec:
         - containerPort: 8003
         envFrom:
         - configMapRef:
-            name: orleansclientapi-env
+            name: orleans-client-api-env
         - secretRef:
-            name: orleansclientapi-secrets
+            name: orleans-client-api-secrets
       terminationGracePeriodSeconds: 180

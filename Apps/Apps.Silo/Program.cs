@@ -4,6 +4,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddCors();
+
 builder.AddKeyedRedisClient("orleans-redis", null, options =>
 {
     options.AsyncTimeout = 30_000;
@@ -13,17 +17,8 @@ builder.AddKeyedRedisClient("orleans-redis", null, options =>
 builder.UseOrleans(siloBuilder =>
 {
     siloBuilder
-        .Configure<SiloOptions>(options => { options.SiloName = "Silo"; })
         .AddActivityPropagation()
-        .ConfigureLogging(logging => logging.AddConsole())
-        ;
-    
-    siloBuilder
-        .UseDashboard(config =>
-            config.HideTrace =
-                string.IsNullOrEmpty(builder.Configuration.GetValue<string>("HideTrace"))
-                || builder.Configuration.GetValue<bool>("HideTrace"))
-        ;
+        .ConfigureLogging(logging => logging.AddConsole());
     
     if (builder.Environment.IsDevelopment())
     {
@@ -34,7 +29,18 @@ builder.UseOrleans(siloBuilder =>
 
 var app = builder.Build();
 
+app.MapGet("/", () => "Silo")
+    .WithOpenApi();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+app.MapDefaultEndpoints();
 app.UseHttpsRedirection();
-app.MapGet("/", () => Results.Ok("Silo"));
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
 
 app.Run();

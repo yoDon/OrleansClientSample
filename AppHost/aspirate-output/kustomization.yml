@@ -1,8 +1,8 @@
 resources:
 - orleans-redis
 - silo
-- orleansclientapi
-- nonclientapi
+- orleans-client-api
+- non-orleans-api
 - dashboard.yml
 
 generatorOptions:

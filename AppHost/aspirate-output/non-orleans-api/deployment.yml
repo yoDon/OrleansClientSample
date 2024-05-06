@@ -2,30 +2,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nonclientapi
+  name: non-orleans-api
   labels:
-    app: nonclientapi
+    app: non-orleans-api
 spec:
   minReadySeconds: 60
   replicas: 1
   selector:
     matchLabels:
-      app: nonclientapi
+      app: non-orleans-api
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: nonclientapi
+        app: non-orleans-api
     spec:
       containers:
-      - name: nonclientapi
-        image: nonclientapi:latest
+      - name: non-orleans-api
+        image: non-orleans-api:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
         - containerPort: 8443
         envFrom:
         - configMapRef:
-            name: nonclientapi-env
+            name: non-orleans-api-env
       terminationGracePeriodSeconds: 180

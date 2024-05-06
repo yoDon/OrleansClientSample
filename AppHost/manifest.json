@@ -55,7 +55,7 @@
         }
       }
     },
-    "orleansclientapi": {
+    "orleans-client-api": {
       "type": "project.v0",
       "path": "../Apps/Apps.OrleansClientApi/Apps.OrleansClientApi.csproj",
       "env": {
@@ -69,8 +69,8 @@
         "Orleans__ClusterId": "{orleans-cluster-cluster-id.value}",
         "Orleans__ServiceId": "{orleans-cluster-service-id.value}",
         "Orleans__EnableDistributedTracing": "true",
-        "Orleans__Endpoints__SiloPort": "{orleansclientapi.bindings.orleans-silo.targetPort}",
-        "Orleans__Endpoints__GatewayPort": "{orleansclientapi.bindings.orleans-gateway.targetPort}"
+        "Orleans__Endpoints__SiloPort": "{orleans-client-api.bindings.orleans-silo.targetPort}",
+        "Orleans__Endpoints__GatewayPort": "{orleans-client-api.bindings.orleans-gateway.targetPort}"
       },
       "bindings": {
         "http": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "nonclientapi": {
+    "non-orleans-api": {
       "type": "project.v0",
       "path": "../Apps/Apps.NonClientApi/Apps.NonClientApi.csproj",
       "env": {

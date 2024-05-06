@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nonclientapi
+  name: orleans-client-api
 spec:
   type: ClusterIP
   selector:
-    app: nonclientapi
+    app: orleans-client-api
   ports:
   - name: http
     port: 8080
@@ -14,3 +14,9 @@ spec:
   - name: https
     port: 8443
     targetPort: 8443
+  - name: orleans-silo
+    port: 8002
+    targetPort: 8002
+  - name: orleans-gateway
+    port: 8003
+    targetPort: 8003

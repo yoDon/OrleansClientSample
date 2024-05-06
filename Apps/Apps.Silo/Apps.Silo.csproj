@@ -2,17 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Aspire.StackExchange.Redis" Version="8.0.0-preview.6.24214.1"/>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4"/>
     <PackageReference Include="Microsoft.Orleans.Clustering.Redis" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Orleans.Persistence.AzureStorage" Version="8.1.0" />
     <PackageReference Include="Microsoft.Orleans.Server" Version="8.1.0" />
-    <PackageReference Include="OrleansDashboard" Version="8.0.0" />
-    <PackageReference Include="Orleans.SyncWork" Version="8.1.12" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
   </ItemGroup>
 
   <ItemGroup>

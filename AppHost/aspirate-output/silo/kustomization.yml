@@ -14,8 +14,8 @@ configMapGenerator:
     - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
     - Orleans__Clustering__ProviderType=Redis
     - Orleans__Clustering__ServiceKey=orleans-redis
-    - Orleans__ClusterId=1uIiLrgn81CWbGHPrJr1rKonM
-    - Orleans__ServiceId=4aROeX7iy9R!BN9DFoRgKYmk3
+    - Orleans__ClusterId=h7x64WAzwXXR4gfH8wnSlkAoY
+    - Orleans__ServiceId=CFWeE7orZWV3Lvi3btqVPAaMY
     - Orleans__EnableDistributedTracing=true
     - Orleans__Endpoints__SiloPort=8000
     - Orleans__Endpoints__GatewayPort=8001
