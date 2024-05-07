@@ -14,15 +14,15 @@
   "includeDashboard": true,
   "useCustomNamespace": false,
   "secrets": {
-    "salt": "nRoPAO5LU0Ukh9tV",
-    "hash": "WTREXSrU3OvRs\u002BxjO4DeW2sTR0nD2aS\u002BlO3aPjO/so0=",
+    "salt": "/1sxv/KlmbN\u002BhPcc",
+    "hash": "oRC9d5bGm2BJfk6BNXfrznl7nMoWWi1ZjNS\u002BrxJxIUQ=",
     "secrets": {
       "orleans-redis": {},
       "silo": {
-        "ConnectionStrings__orleans-redis": "nRoPAO5LU0Ukh9tVrYug5KKxi4p71kvFETKykcyZYlhcz/GrcX5RHw7lw3OxSA=="
+        "ConnectionStrings__orleans-redis": "/1sxv/KlmbN\u002BhPcckRIvPTegrRf080MROxEtm0LEKYtC2prve3khmmQeG0QirA=="
       },
       "orleans-client-api": {
-        "ConnectionStrings__orleans-redis": "nRoPAO5LU0Ukh9tVrYug5KKxi4p71kvFETKykcyZYlhcz/GrcX5RHw7lw3OxSA=="
+        "ConnectionStrings__orleans-redis": "/1sxv/KlmbN\u002BhPcckRIvPTegrRf080MROxEtm0LEKYtC2prve3khmmQeG0QirA=="
       },
       "non-orleans-api": {},
       "orleans-cluster-cluster-id": {},
