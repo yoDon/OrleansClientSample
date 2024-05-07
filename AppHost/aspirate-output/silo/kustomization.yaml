@@ -1,6 +1,6 @@
 resources:
-- deployment.yml
-- service.yml
+- deployment.yaml
+- service.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
@@ -14,14 +14,14 @@ configMapGenerator:
     - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
     - Orleans__Clustering__ProviderType=Redis
     - Orleans__Clustering__ServiceKey=orleans-redis
-    - Orleans__ClusterId=h7x64WAzwXXR4gfH8wnSlkAoY
-    - Orleans__ServiceId=CFWeE7orZWV3Lvi3btqVPAaMY
+    - Orleans__ClusterId=YI5gIY!wWXQTf47fEwHCMBdRZ
+    - Orleans__ServiceId=AJqLjfRcRscwk7fOEe9wauq1w
     - Orleans__EnableDistributedTracing=true
     - Orleans__Endpoints__SiloPort=8000
     - Orleans__Endpoints__GatewayPort=8001
+    - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
+    - OTEL_SERVICE_NAME=silo
     - ASPNETCORE_URLS=http://+:8080;
-    - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:4317
-
 
 secretGenerator:
 - name: silo-secrets

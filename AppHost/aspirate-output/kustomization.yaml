@@ -3,7 +3,7 @@ resources:
 - silo
 - orleans-client-api
 - non-orleans-api
-- dashboard.yml
+- dashboard.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

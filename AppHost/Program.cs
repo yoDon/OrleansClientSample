@@ -1,8 +1,7 @@
 ﻿var builder = DistributedApplication.CreateBuilder(args);
 
 var redis =
-    builder.AddRedis("orleans-redis")
-        .WithHealthCheck();
+    builder.AddRedis("orleans-redis");
 
 var orleans = 
     builder.AddOrleans("orleans-cluster")
@@ -11,7 +10,6 @@ var orleans =
 var silo =
     builder.AddProject<Projects.Apps_Silo>("silo")
         .WithReference(orleans)
-        .WaitOn(redis)
         .WithReplicas(3);
 
 var clientApi =

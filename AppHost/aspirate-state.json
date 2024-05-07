@@ -1,0 +1,34 @@
+{
+  "projectPath": ".",
+  "inputPath": "aspirate-output",
+  "outputPath": "aspirate-output",
+  "containerImageTags": [
+    "latest"
+  ],
+  "imagePullPolicy": "IfNotPresent",
+  "containerBuilder": "docker",
+  "kubeContext": "rancher-desktop",
+  "outputFormat": "kustomize",
+  "skipFinalKustomizeGeneration": false,
+  "privateRegistryEmail": "aspir8@aka.ms",
+  "includeDashboard": true,
+  "useCustomNamespace": false,
+  "secrets": {
+    "salt": "nRoPAO5LU0Ukh9tV",
+    "hash": "WTREXSrU3OvRs\u002BxjO4DeW2sTR0nD2aS\u002BlO3aPjO/so0=",
+    "secrets": {
+      "orleans-redis": {},
+      "silo": {
+        "ConnectionStrings__orleans-redis": "nRoPAO5LU0Ukh9tVrYug5KKxi4p71kvFETKykcyZYlhcz/GrcX5RHw7lw3OxSA=="
+      },
+      "orleans-client-api": {
+        "ConnectionStrings__orleans-redis": "nRoPAO5LU0Ukh9tVrYug5KKxi4p71kvFETKykcyZYlhcz/GrcX5RHw7lw3OxSA=="
+      },
+      "non-orleans-api": {},
+      "orleans-cluster-cluster-id": {},
+      "orleans-cluster-service-id": {}
+    }
+  },
+  "processAllComponents": true,
+  "existingSecretsType": "Overwrite"
+}

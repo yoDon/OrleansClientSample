@@ -3,7 +3,7 @@
     "orleans-redis": {
       "type": "container.v0",
       "connectionString": "{orleans-redis.bindings.tcp.host}:{orleans-redis.bindings.tcp.port}",
-      "image": "docker.io/library/redis:7.2.4",
+      "image": "docker.io/library/redis:7.2",
       "bindings": {
         "tcp": {
           "scheme": "tcp",
