@@ -14,7 +14,7 @@ var silo =
 
 var clientApi =
     builder.AddProject<Projects.Apps_OrleansClientApi>("orleans-client-api")
-        .WithReference(orleans)
+        .WithReference(orleans.AsClient())
         .WithExternalHttpEndpoints();
 
 var nonOrleansApi =

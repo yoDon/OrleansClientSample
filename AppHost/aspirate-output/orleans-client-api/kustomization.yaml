@@ -14,11 +14,9 @@ configMapGenerator:
     - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
     - Orleans__Clustering__ProviderType=Redis
     - Orleans__Clustering__ServiceKey=orleans-redis
-    - Orleans__ClusterId=pgsmR4YwPp7HefdVDdlf1VeT3
-    - Orleans__ServiceId=9e5!vm8nhlhFjz2eKLCVW7sYg
+    - Orleans__ClusterId=c!vn!VqurxS1FBVnW0wooJGka
+    - Orleans__ServiceId=aHOF4n!xIe90wnG4ioEBPSwIA
     - Orleans__EnableDistributedTracing=true
-    - Orleans__Endpoints__SiloPort=8002
-    - Orleans__Endpoints__GatewayPort=8003
     - OTEL_EXPORTER_OTLP_ENDPOINT=http://aspire-dashboard:18889
     - OTEL_SERVICE_NAME=orleans-client-api
     - ASPNETCORE_URLS=http://+:8080;

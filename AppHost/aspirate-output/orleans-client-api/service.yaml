@@ -14,9 +14,3 @@ spec:
   - name: https
     port: 8443
     targetPort: 8443
-  - name: orleans-silo
-    port: 8002
-    targetPort: 8002
-  - name: orleans-gateway
-    port: 8003
-    targetPort: 8003

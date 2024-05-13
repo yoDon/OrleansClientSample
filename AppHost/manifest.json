@@ -68,9 +68,7 @@
         "ConnectionStrings__orleans-redis": "{orleans-redis.connectionString}",
         "Orleans__ClusterId": "{orleans-cluster-cluster-id.value}",
         "Orleans__ServiceId": "{orleans-cluster-service-id.value}",
-        "Orleans__EnableDistributedTracing": "true",
-        "Orleans__Endpoints__SiloPort": "{orleans-client-api.bindings.orleans-silo.targetPort}",
-        "Orleans__Endpoints__GatewayPort": "{orleans-client-api.bindings.orleans-gateway.targetPort}"
+        "Orleans__EnableDistributedTracing": "true"
       },
       "bindings": {
         "http": {
@@ -84,18 +82,6 @@
           "protocol": "tcp",
           "transport": "http",
           "external": true
-        },
-        "orleans-silo": {
-          "scheme": "tcp",
-          "protocol": "tcp",
-          "transport": "tcp",
-          "targetPort": 8002
-        },
-        "orleans-gateway": {
-          "scheme": "tcp",
-          "protocol": "tcp",
-          "transport": "tcp",
-          "targetPort": 8003
         }
       }
     },

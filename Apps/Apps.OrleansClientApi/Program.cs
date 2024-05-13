@@ -1,21 +1,4 @@
-using System.Collections;
 using Grains.GrainDef;
-
-var useOrleansClientHack = true;
-if (useOrleansClientHack)
-{
-    // Hack to get around issue where UseOrleansClient thinks it needs to configure grain state providers...
-    var environmentVariables = Environment.GetEnvironmentVariables();
-    foreach (DictionaryEntry dictionaryEntry in environmentVariables)
-    {
-        Console.WriteLine($"---- {dictionaryEntry.Key}");
-        if (dictionaryEntry.Key.ToString()!.StartsWith("Orleans__GrainStorage__"))
-        {
-            Console.WriteLine("FOUND IT - CLEARING IT");
-            Environment.SetEnvironmentVariable(dictionaryEntry.Key.ToString()!, null);
-        }
-    }
-}
 
 var builder = WebApplication.CreateBuilder(args);
 
